@@ -2,10 +2,24 @@ const express= require('express');
 const {ROUTE_CONSTANTS}=require('./helpers/route_constants');
 const app= express();
 const bodyparser=require('body-parser');
+const asyncRequest = require('async-request');
+const { request } = require('express');
+const countrylisturl="https://restcountries.eu/rest/v2/all";
 
 app.use(bodyparser.urlencoded({extended:false}))
 
 app.use(bodyparser.json())
+app.get(ROUTE_CONSTANTS.GET_COUNTRIES,async function(req,res){
+  try{
+  const response= await asyncRequest(countrylisturl);
+  res.json(response);
+  }
+  catch(err)
+  {
+    res.json(err);
+  }
+
+});
 
 app.get(ROUTE_CONSTANTS.DEFAULT,function(req,res){
   res.send("<h1> welcome </h1>");

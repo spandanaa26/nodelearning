@@ -5,5 +5,7 @@ GET_REGISTER:"/register",
 GET_PRODUCTS:"/products",
 GET_FILE:"/file",
 POST_REGISTER:"/register",
-POST_LOGIN:"/login"
+POST_LOGIN:"/login",
+GET_COUNTRIES:"/countrylist"
+
 }
